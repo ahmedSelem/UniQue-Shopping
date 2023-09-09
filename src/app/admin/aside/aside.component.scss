@@ -1,0 +1,40 @@
+$mainColor: #4e73df;
+$mainFont: RobotoCondensed;
+$altFont: Tajawal;
+$mainRadius: 8px;
+
+.aside {
+    background-color: $mainColor;
+    width: 220px;
+    position: fixed;
+    height: 100%;
+    .logo-box {
+        border-bottom: 1px solid rgba(255,255,255,.15);
+        i {
+            font-size: 40px;
+            rotate: -30deg;
+        }
+        span {
+            font-size: 22px;
+            font-family: $mainFont;
+        }
+    }
+    .aside-list {
+        li {
+            a {
+                color: rgba(255,255,255,.8);
+                font-size: 18px;
+                &:hover {
+                    color: #fff;
+                    transition: all .5s ease-in-out;
+                }
+                &.active {
+                    color: #fff;
+                }
+                i {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

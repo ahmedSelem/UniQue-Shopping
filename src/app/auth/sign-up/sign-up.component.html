@@ -1,0 +1,90 @@
+<form [formGroup]="signUpForm!" (ngSubmit)="onSignUp(signUpForm!)">
+
+    <!-- <div class="row check-box mb-3">
+        <label for="emailAddress">You Are ?</label>
+        <div class="col-md-6">
+            <div class="form-check d-flex align-items-center">
+                <input formControlName="userType" class="form-check-input me-2 mt-0" type="radio" name="userType"
+                    value="user" id="user">
+                <label class="form-check-label w-100" for="user">
+                    User
+                </label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-check d-flex align-items-center">
+                <input formControlName="userType" class="form-check-input me-2 mt-0" type="radio" name="userType"
+                    value="seller" id="seller">
+                <label class="form-check-label w-100" for="seller">
+                    Seller
+                </label>
+            </div>
+        </div>
+        <div *ngIf="signUpForm?.get('userType')?.errors && signUpForm?.get('userType')?.touched"
+            class="invalid-feedback d-block">
+            <p *ngIf="signUpForm?.get('userType')?.getError('required')" class="mb-1">User Type is required!</p>
+        </div>
+    </div> -->
+
+    <div class="form-group mb-3">
+        <label for="emailAddress">Email address</label>
+        <div class="inputs-group position-relative">
+            <input formControlName="email" type="email" class="form-control" id="emailAddress"
+                placeholder="Enter email">
+            <span *ngIf="signUpForm?.get('email')?.valid" class="input-corrected position-absolute">
+                <i class="fa-solid fa-circle-check"></i>
+            </span>
+        </div>
+        <div *ngIf="signUpForm?.get('email')?.errors && signUpForm?.get('email')?.touched"
+            class="invalid-feedback d-block">
+            <p *ngIf="signUpForm?.get('email')?.getError('required')" class="mb-1">Email is required!</p>
+            <p *ngIf="signUpForm?.get('email')?.getError('email')" class="mb-1">Email must be like that 'test@gmail.com'
+            </p>
+        </div>
+    </div>
+    <div class="form-group mb-4">
+        <label for="password">Password</label>
+        <div class="inputs-group position-relative">
+            <input formControlName="password" type="password" class="form-control" id="password" placeholder="Password">
+            <span *ngIf="signUpForm?.get('password')?.valid" class="input-corrected position-absolute">
+                <i class="fa-solid fa-circle-check"></i>
+            </span>
+        </div>
+        <div *ngIf="signUpForm?.get('password')?.errors && signUpForm?.get('password')?.touched"
+            class="invalid-feedback d-block">
+            <p *ngIf="signUpForm?.get('password')?.getError('required')" class="mb-1">Password is required!</p>
+            <p *ngIf="signUpForm?.get('password')?.getError('minlength')" class="mb-1">The password's very weak(must
+                have 6 or great)!</p>
+            <p *ngIf="signUpForm?.get('password')?.getError('pattern')" class="mb-1">Password should have number, and
+                character (UpperCase, LowerCase)! </p>
+        </div>
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="password">Confirm Password</label>
+        <div class="inputs-group position-relative">
+            <input formControlName="confirmPassword" type="password" class="form-control" id="confirmPassword"
+                placeholder="Confirm Password">
+            <span *ngIf="signUpForm?.get('confirmPassword')?.touched && !signUpForm?.errors?.['identityRevealed']"
+                class="input-corrected position-absolute">
+                <i class="fa-solid fa-circle-check"></i>
+            </span>
+        </div>
+        <div *ngIf="signUpForm?.get('confirmPassword')?.touched" class="invalid-feedback d-block">
+            <p *ngIf="signUpForm?.errors?.['identityRevealed']" class="mb-1"> ConfrmPassword Must Be Matched The
+                Password !</p>
+        </div>
+    </div>
+    <button *ngIf="!isLoading ; else loading" type="submit" class="btn btn-primary text-capitalize"
+        [disabled]="signUpForm?.invalid">
+        create account
+    </button>
+
+    <ng-template #loading>
+        <app-loading></app-loading>
+    </ng-template>
+
+    <div *ngIf="errorMsg" class="alert alert-danger p-2 mt-3" role="alert">
+        {{errorMsg}}
+    </div>
+</form>

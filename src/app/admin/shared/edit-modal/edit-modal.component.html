@@ -1,0 +1,41 @@
+<div class="modal d-block" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
+    <div class="modal-overlay" (click)="onCloseModal()"></div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Product Edit</h5>
+                <button (click)="onCloseModal()" type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <form [formGroup]="editForm!" (ngSubmit)="onUpdateItem(editForm!)">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">title</label>
+                        <input formControlName="title" type="text" class="form-control">
+                    </div>
+                    <div *ngIf="activeUrl != 'categories'" class="mb-3">
+                        <label class="form-label">price</label>
+                        <input formControlName="price" type="number" class="form-control">
+                    </div>
+                    <div *ngIf="activeUrl != 'products'" class="mb-3">
+                        <label class="form-label">Image</label>
+                        <input formControlName="image" type="text" class="form-control">
+                    </div>
+                    <div *ngIf="activeUrl != 'categories'" class="mb-3">
+                        <label class="form-label">description</label>
+                        <textarea formControlName="description" class="form-control" rows="4"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button  (click)="onCloseModal()" type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button [disabled]="editForm!.invalid" type="submit" class="btn btn-primary">
+                            Update
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

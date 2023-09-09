@@ -1,0 +1,10 @@
+.navbar {
+    margin-left: 220px;
+    .nav-item {
+        .nav-link.dropdown-toggle.show {
+            + .dropdown-menu {
+                display: block;
+            }
+        }
+    }
+}

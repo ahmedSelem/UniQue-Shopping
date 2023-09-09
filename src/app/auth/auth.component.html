@@ -1,0 +1,75 @@
+<section class="auth-sec d-flex p-4">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="box-left rounded">
+                    <div class="logo p-5 pt-4">
+                        <span class="text-white">UniQUe</span>
+                    </div>
+
+                    <div class="title-sec px-5">
+                        <h1 class="text-white text-capitalize">
+                            start your
+                            <br />
+                            journey with us.
+                        </h1>
+                        <p class="text-white mb-0 mt-3">Discover the world's best community of buyer and business owner
+                        </p>
+                    </div>
+
+                    <div class="testimonial-box mt-5 px-5">
+                        <owl-carousel-o [options]="customOptions">
+                            <ng-template *ngFor="let x of testimonialList" carouselSlide>
+                                <p class="text-white">
+                                    Simply unbelievable! i am really satisfied with my projects and bussiness. This is
+                                    Absolutely
+                                    wonderfull!
+                                </p>
+                                <div class="testimonial-info d-flex">
+                                    <img src="../../../assets/images/auth/userName.jpg" />
+                                    <div class="info ms-3 text-white">
+                                        <strong>Ahmed Selem</strong>
+                                        <span class="d-block">Buyer</span>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </owl-carousel-o>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="box-right">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 pt-4">
+                                <div class="title-sec">
+                                    <h2 class="fw-bold">{{isLogin ? "Login now ..." : "Get started ..."}} </h2>
+                                    <p>{{isLogin ? "Login with your account" : "Create your account now" }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-10 mt-4" *ngIf="!isLoading; else loading;">
+                                <app-login *ngIf="isLogin"></app-login>
+                                <app-sign-up (signUpSuccess)="onToggelMode()" *ngIf="!isLogin"></app-sign-up>
+
+                                <div class="have-acount d-flex justify-content-end border-top mt-4 pt-4">
+                                    <p class="mb-0 me-2">{{isLogin ? "Don't Have an account?" : 'Have an account?'}}</p>
+                                    <a (click)="onToggelMode()">{{isLogin ? 'Register' : 'Login'}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+    <ng-template #loading>
+        <app-placeholder></app-placeholder>
+    </ng-template>
+
+
+</section>

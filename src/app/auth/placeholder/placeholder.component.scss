@@ -1,0 +1,24 @@
+
+.placeholder-auth {
+    .card-body {
+        .card-title{
+            span {
+                height: 24px;
+                width: 100px;
+            }
+        }
+        .card-input {
+            span {
+                height: 38px
+            }
+        }
+        .card-btn {
+            p {
+                span {
+                    width: 140px;
+                    height: 40px
+                }
+            }
+        }
+    }
+}

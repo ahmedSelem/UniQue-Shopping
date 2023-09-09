@@ -1,1 +1,135 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    src: url('assets/fonts/RobotoCondensed-Regular.ttf');
+    font-family: RobotoCondensed;
+}
+
+@font-face {
+    src: url('assets/fonts/Tajawal-Regular.ttf');
+    font-family: Tajawal;
+}
+
+$mainColor: #4e73df;
+$mainFont: RobotoCondensed;
+$altFont: Tajawal;
+$mainRadius: 8px;
+
+
+* {
+    font-family: $altFont;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $mainFont;
+}
+
+a {
+    cursor: pointer;
+}
+
+.auth-sec {
+    height: 100vh;
+
+    .box-left {
+        background-color: $mainColor;
+
+        .logo {
+            span {
+                font-size: 24px;
+                font-family: $mainFont;
+            }
+        }
+
+        .title-sec {
+            margin-top: 30px;
+
+            h1 {
+                font-size: 50px;
+            }
+        }
+
+        .testimonial-box {
+            .owl-carousel {
+                .owl-item {
+                    padding: 20px;
+                    border-radius: $mainRadius;
+                    background-color: #2b55cd;
+
+                    .testimonial-info {
+                        img {
+                            width: 40px;
+                            height: 45px;
+                            border-radius: 10px;
+                        }
+
+                        .info {
+                            span {
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+
+                .owl-nav {
+                    >div {
+                        border-radius: 50px;
+                        height: 10px;
+                        width: 10px;
+                        padding: 0;
+                        margin-top: 20px;
+                    }
+                }
+            }
+        }
+    }
+
+    .box-right {
+        form {
+            .check-box {
+                .form-check {
+                    height: 38px;
+                    border: 1px solid #dee2e6;
+                    border-radius: 6px;
+                    padding-left: 40px;
+                }
+            }
+            .form-group {
+                .inputs-group {
+                    .form-control {
+                        padding-right: 30px;
+                    }
+
+                    .input-corrected {
+                        right: 0;
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                        color: green;
+                    }
+                }
+            }
+            button[type='submit'] {
+                width: 140px;
+            }
+
+        }
+
+        .have-acount {
+            a {
+                color: $mainColor;
+            }
+        }
+
+    }
+}
+
+
+
+@import '../src/app/admin/shared/shared-style.scss';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

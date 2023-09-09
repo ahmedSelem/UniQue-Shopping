@@ -1,0 +1,22 @@
+<div class="modal modal-sm d-block" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-overlay" (click)="onCloseModal()"></div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{itemSelected!.title ? itemSelected!.title : itemSelected!.name}}</h5>
+                <button (click)="onCloseModal()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h3>Are You Sure ?</h3>
+            </div>
+            <div class="modal-footer">
+                <button (click)="onCloseModal()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Close
+                </button>
+                <button (click)="onDeleteProduct()" type="button" class="btn btn-danger">
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

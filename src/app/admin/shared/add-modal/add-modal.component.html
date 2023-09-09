@@ -1,0 +1,49 @@
+<div class="modal modal-lg d-block" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
+    <div class="modal-overlay" (click)="onCloseModal()"></div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
+                <button (click)="onCloseModal()" type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <form [formGroup]="addForm!" (ngSubmit)="onAddProduct(addForm!)">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Title</label>
+                            <input formControlName="title" type="text" class="form-control">
+                        </div>
+                        <div *ngIf="this.activeUrl != 'categories'" class="col-md-6 mb-3">
+                            <label class="form-label">Price</label>
+                            <input formControlName="price" type="number" class="form-control">
+                        </div>
+                        <div *ngIf="this.activeUrl != 'categories'" class="col-md-6 mb-3">
+                            <label class="form-label">Category</label>
+                            <select formControlName="categoryId" class="form-select" aria-label="Default select example">
+                                <option *ngFor="let category of categoriesList" [value]="category.id">{{category.name}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Image URL</label>
+                            <input formControlName="images" type="text" class="form-control">
+                        </div>
+                        <div *ngIf="this.activeUrl != 'categories'" class="col-12 mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea formControlName="description" class="form-control" rows="4"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button (click)="onCloseModal()" type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button [disabled]="addForm!.invalid" type="submit" class="btn btn-primary">
+                            Update
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

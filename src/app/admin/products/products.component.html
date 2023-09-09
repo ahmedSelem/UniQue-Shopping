@@ -1,0 +1,52 @@
+<ng-component appPlaceholderDirective></ng-component>
+<section class="products-panel">
+    <div class="header-tabel d-flex justify-content-between border-bottom mb-4 pb-4">
+        <h3>Products</h3>
+        <button class="btn btn-primary" (click)="openModal('add')">Add New Product</button>
+    </div>
+    <ng-component *ngIf="!isLoading; else loading;">
+        <table *ngIf="!isError; else error;" class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">id</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Info</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of productList; let i = index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{product.title}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.id}}</td>
+                    <td>{{product.category.name}}</td>
+                    <td>
+                        <a (click)="openModal('edit', product, i)" class="me-3">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                        <a (click)="openModal('delete', product, i)">
+                            <i class="fa-solid fa-trash text-danger"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-component>
+
+
+</section>
+
+<!-- Show When Api's Still Fetching -->
+<ng-template #loading>
+    <app-loading></app-loading>
+</ng-template>
+
+<!-- Show When Has Error Occurred -->
+<ng-template #error>
+    <div class="d-flex justify-content-center">
+        <img src="../../../assets/images/admin/error-img.svg" height="400" width="400">
+    </div>
+</ng-template>
